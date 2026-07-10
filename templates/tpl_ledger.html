@@ -1,0 +1,224 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Morehouse Athletics — The Ledger</title>
+<meta name="description" content="Morehouse College Athletics' 2025-26 season, entered as a live ledger: four SIAC championships confirmed one at a time, plus academics and the season's full record.">
+<style>
+  @font-face{font-family:'Big Shoulders';font-weight:700 900;font-style:normal;font-display:swap;src:url(__BSD__) format('woff2');}
+  @font-face{font-family:'Source Serif';font-weight:400 600;font-style:normal;font-display:swap;src:url(__SS4REG__) format('woff2');}
+  @font-face{font-family:'Source Serif';font-weight:400;font-style:italic;font-display:swap;src:url(__SS4ITAL__) format('woff2');}
+
+  :root{
+    --maroon:#8B2433;
+    --maroon-deep:#3E0F18;
+    --ink:#1A1A1C;
+    --ink-soft:#6B6870;
+    --paper:#FCFBFA;
+    --line: rgba(26,26,28,0.11);
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Source Serif', Georgia, serif; font-size:1rem; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--maroon); color:var(--white);}
+  img{max-width:100%; display:block;}
+  .display{font-family:'Big Shoulders',sans-serif; font-weight:800; letter-spacing:-0.01em; margin:0; line-height:1.0; text-wrap:balance;}
+  .eyebrow{font-family:'Big Shoulders',sans-serif; font-weight:700; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--maroon);}
+  p{margin:0 0 1em; max-width:58ch;}
+  .fig{font-family:'Big Shoulders',sans-serif; font-weight:800; color:var(--maroon); font-variant-numeric:tabular-nums;}
+
+  header.top{position:sticky; top:0; z-index:95; background:rgba(252,251,250,0.94); backdrop-filter:blur(6px); border-bottom:1px solid var(--line); padding:0.9rem 1.4rem; display:flex; justify-content:space-between; align-items:center; font-family:'Big Shoulders',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;}
+  header.top .tag{color:var(--maroon);}
+
+  .layout{display:grid; grid-template-columns:236px 1fr; max-width:1320px; margin:0 auto;}
+  @media (max-width:880px){ .layout{grid-template-columns:1fr;} }
+
+  .ledger-rail{position:sticky; top:52px; align-self:start; height:calc(100vh - 52px); padding:2.2rem 1.2rem; border-right:1px solid var(--line); display:flex; flex-direction:column;}
+  @media (max-width:880px){
+    .ledger-rail{position:sticky; top:52px; height:auto; flex-direction:row; overflow-x:auto; padding:0.9rem 1rem; border-right:none; border-bottom:1px solid var(--line); background:var(--paper); z-index:80; gap:1rem;}
+    .ledger-rail .rail-title, .ledger-rail .rail-total{display:none;}
+  }
+  .ledger-rail .rail-title{font-family:'Big Shoulders',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:1.3rem;}
+  .ledger-item{display:flex; align-items:center; gap:0.7rem; padding:0.6rem 0; border-bottom:1px solid var(--line); flex:0 0 auto;}
+  @media (max-width:880px){ .ledger-item{border-bottom:none; padding:0.3rem 0;} }
+  .ledger-item .dot{width:9px; height:9px; border-radius:50%; border:1.5px solid var(--ink-soft); flex:0 0 auto; transition:background 0.4s, border-color 0.4s;}
+  .ledger-item.is-done .dot{background:var(--maroon); border-color:var(--maroon);}
+  .ledger-item .txt{font-family:'Big Shoulders',sans-serif; font-size:0.78rem; font-weight:700; color:var(--ink-soft); transition:color 0.4s; white-space:nowrap;}
+  .ledger-item.is-done .txt{color:var(--ink);}
+  .rail-total{margin-top:auto; padding-top:1.5rem; font-family:'Big Shoulders',sans-serif;}
+  .rail-total .big{font-size:2.6rem; font-weight:900; color:var(--maroon); line-height:1;}
+  .rail-total .lab{font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-top:0.3rem;}
+
+  main{padding:0 1.4rem;}
+  .intro{padding:4.5rem 0 3rem; max-width:760px;}
+  .intro h1{font-size:clamp(2.2rem,5.5vw,3.6rem); margin:0.8rem 0 1.2rem;}
+  .intro p.dek{font-family:'Source Serif',serif; font-style:italic; font-size:1.2rem; color:var(--ink-soft); max-width:52ch;}
+
+  section.block{padding:3.2rem 0; border-top:1px solid var(--line);}
+  .block-head{position:sticky; top:52px; background:var(--paper); z-index:10; padding:0.6rem 0 1.2rem; margin-bottom:1rem;}
+  .block-head h2{font-size:clamp(1.5rem,3.5vw,2rem);}
+  .block-head .eyebrow{display:block; margin-bottom:0.4rem;}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .grid .tile{background:var(--white); padding:1.5rem 1.3rem;}
+  .grid .tile .fig{font-size:2.1rem; display:block; font-variant-numeric:tabular-nums;}
+  .grid .tile .lab{font-family:'Big Shoulders',sans-serif; font-size:0.82rem; font-weight:700; margin-top:0.3rem;}
+  .grid .tile .sub{font-size:0.78rem; color:var(--ink-soft); margin-top:0.15rem; max-width:24ch;}
+
+  .banner{margin:1.2rem 0 0; position:relative; height:220px; border-radius:2px; overflow:hidden;}
+  .banner img{width:100%; height:100%; object-fit:cover; object-position:center 25%;}
+  .banner .scrim{position:absolute; inset:0; background:linear-gradient(90deg, rgba(26,26,28,0.78) 0%, rgba(26,26,28,0.25) 55%, rgba(26,26,28,0.05) 100%);}
+  .banner .txt{position:absolute; left:1.4rem; top:50%; transform:translateY(-50%); color:var(--white);}
+  .banner .txt .fig{color:var(--white); font-size:2.4rem;}
+  .banner .txt .lab{font-family:'Big Shoulders',sans-serif; font-size:0.75rem; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.85); margin-top:0.2rem;}
+
+  .ask{margin:3.5rem 0 0; padding:3rem 1.6rem; background:var(--ink); color:var(--white); border-radius:2px;}
+  .ask .goal{font-family:'Big Shoulders',sans-serif; font-weight:900; font-size:clamp(2.4rem,7vw,3.8rem); line-height:0.95;}
+  .ask .goal small{display:block; font-size:0.32em; font-weight:700; color:rgba(255,255,255,0.65); letter-spacing:0.04em; margin-top:0.5rem;}
+  .ask p{color:rgba(255,255,255,0.9); margin-top:1.2rem; max-width:60ch;}
+  .ask strong{color:var(--white);}
+
+  footer{padding:3rem 0 3.5rem; border-top:1px solid var(--line); margin-top:1rem;}
+  footer .legal{font-family:'Big Shoulders',sans-serif; font-size:0.66rem; letter-spacing:0.03em; color:var(--ink-soft); max-width:60ch;}
+
+  [data-reveal]{opacity:0; transform:translateY(14px); transition:opacity 0.55s ease, transform 0.55s ease;}
+  [data-reveal].is-visible{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){ [data-reveal]{transition:none; opacity:1; transform:none;} }
+</style>
+
+<header class="top"><span>Morehouse Athletics</span><span class="tag">The Ledger &middot; 2025&ndash;26</span></header>
+
+<div class="layout">
+  <aside class="ledger-rail">
+    <div class="rail-title">Season Ledger</div>
+    <div class="ledger-item" data-ledger-item="xc"><span class="dot"></span><span class="txt">Cross Country</span></div>
+    <div class="ledger-item" data-ledger-item="basketball"><span class="dot"></span><span class="txt">Basketball</span></div>
+    <div class="ledger-item" data-ledger-item="indoor"><span class="dot"></span><span class="txt">Indoor Track</span></div>
+    <div class="ledger-item" data-ledger-item="outdoor"><span class="dot"></span><span class="txt">Outdoor Track</span></div>
+    <div class="rail-total"><div class="big"><span id="ledger-count">0</span>/4</div><div class="lab">Titles confirmed</div></div>
+  </aside>
+
+  <main>
+    <div class="intro">
+      <div class="eyebrow">State of Athletics &middot; Season Ledger</div>
+      <h1 class="display">Four titles, entered one at a time.</h1>
+      <p class="dek">Scroll to fill the ledger &mdash; every SIAC championship Morehouse won in 2025&ndash;26, confirmed as it happened.</p>
+    </div>
+
+    <section class="block" data-ledger-section="xc">
+      <div class="block-head" data-reveal><div class="eyebrow">Entry 1 &middot; Fall 2025</div><h2 class="display">Cross Country</h2></div>
+      <div class="grid" data-reveal>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="4">0</span>th</span><span class="lab">Consecutive SIAC title</span><span class="sub">Streak: 2022&ndash;2025</span></div>
+        <div class="tile"><span class="fig">3rd</span><span class="lab">Straight Runner of the Year</span><span class="sub">Brian Kemei, individual champion</span></div>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="51">0</span></span><span class="lab">Career SIAC titles, Coach Hill</span><span class="sub">Most in conference history</span></div>
+      </div>
+    </section>
+
+    <section class="block" data-ledger-section="basketball">
+      <div class="block-head" data-reveal><div class="eyebrow">Entry 2 &middot; Winter 2026</div><h2 class="display">Basketball</h2></div>
+      <div class="grid" data-reveal>
+        <div class="tile"><span class="fig">23</span><span class="lab">Years since the last title</span><span class="sub">66&ndash;56 over Tuskegee, 8 March 2026</span></div>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="22">0</span></span><span class="lab">Wins, program record</span><span class="sub">19&ndash;5 SIAC &middot; Coach Dixon's debut</span></div>
+        <div class="tile"><span class="fig">No. 8</span><span class="lab">NCAA DII Tournament seed</span><span class="sub">First appearance since 2018</span></div>
+      </div>
+      <div class="banner" data-reveal>
+        <img src="__IMG_BASKETBALL__" alt="Morehouse basketball celebrates the 2026 SIAC championship">
+        <div class="scrim"></div>
+        <div class="txt"><span class="fig"><span class="count" data-count-to="19596">0</span></span><span class="lab">Largest crowd ever at a Morehouse game &middot; NBA HBCU Classic, 15 Feb 2026</span></div>
+      </div>
+    </section>
+
+    <section class="block" data-ledger-section="indoor">
+      <div class="block-head" data-reveal><div class="eyebrow">Entry 3 &middot; Winter 2026</div><h2 class="display">Indoor Track</h2></div>
+      <div class="grid" data-reveal>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="2">0</span>x</span><span class="lab">Back-to-back SIAC titles</span><span class="sub">2025 (inaugural) &amp; 2026</span></div>
+      </div>
+    </section>
+
+    <section class="block" data-ledger-section="outdoor">
+      <div class="block-head" data-reveal><div class="eyebrow">Entry 4 &middot; Spring 2026</div><h2 class="display">Outdoor Track &mdash; The Triple Crown</h2></div>
+      <div class="grid" data-reveal>
+        <div class="tile"><span class="fig">1st</span><span class="lab">Triple Crown in SIAC history</span><span class="sub">XC + Indoor + Outdoor, same season</span></div>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="2">0</span>x</span><span class="lab">Commissioner's Cup</span><span class="sub">Back-to-back, 48 points in 2025&ndash;26</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-head" data-reveal><div class="eyebrow">Also This Season</div><h2 class="display">Baseball, Retired No. 6</h2></div>
+      <div class="grid" data-reveal>
+        <div class="tile"><span class="fig">.370</span><span class="lab">Pinckney, career BA</span><span class="sub">Jersey No. 6 retired, 18 April 2026</span></div>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="25">0</span>&ndash;21</span><span class="lab">Baseball final record</span><span class="sub">Program record for wins</span></div>
+        <div class="tile"><span class="fig">3rd</span><span class="lab">SIAC Tournament finish</span><span class="sub">First to reach the final day since 2005</span></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="block-head" data-reveal><div class="eyebrow">Academic Excellence</div><h2 class="display">Every Program, 3.0 or Above</h2></div>
+      <div class="grid" data-reveal>
+        <div class="tile"><span class="fig">3.09</span><span class="lab">Combined department GPA</span><span class="sub">3.13 fall &middot; 3.04 spring</span></div>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="263">0</span></span><span class="lab">Unique student-athletes</span><span class="sub"><span class="count" data-count-to="171">0</span> above 3.0 &middot; <span class="count" data-count-to="17">0</span> earned a 4.0</span></div>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="13">0</span></span><span class="lab">SIAC All-Academic by Sport</span><span class="sub">7 student-athletes</span></div>
+        <div class="tile"><span class="fig"><span class="count" data-count-to="127">0</span></span><span class="lab">SIAC Commissioner's All-Academic</span><span class="sub">93 student-athletes, separate program</span></div>
+      </div>
+    </section>
+
+    <div class="ask" data-reveal>
+      <div class="eyebrow" style="color:rgba(255,255,255,0.7);">The Athletics Advisory Committee</div>
+      <div class="goal">$1M<small>Committed over five years for Morehouse Athletics</small></div>
+      <p>Two funds carry that commitment today: the Fund for Athletic Programs, market value <strong>$256,928.39</strong>, and the Andre Patillo '79 Endowed Scholarship Fund, market value <strong>$55,804.43</strong> &mdash; a confirmed <strong>$312,732.82</strong> in athletics-directed capital, growing with new partners like HBCU Change and Asbury Automotive Group.</p>
+    </div>
+
+    <footer>
+      <div class="eyebrow">Morehouse College Athletics</div>
+      <p class="legal">Prepared for Director of Athletics Harold Ellis &middot; Morehouse College Athletics Advisory Committee &middot; sourced from morehouseathletics.com and the State of Athletics Research Briefing. Version C &mdash; The Ledger.</p>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function easeOutExpo(t){ return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+  function runCount(el){
+    var target = parseFloat(el.getAttribute('data-count-to'));
+    if(reduce){ el.textContent = target.toLocaleString('en-US'); return; }
+    var start=null, dur=1200;
+    function step(ts){
+      if(!start) start=ts;
+      var p=Math.min((ts-start)/dur,1);
+      el.textContent = Math.round(target*easeOutExpo(p)).toLocaleString('en-US');
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.classList.add('is-visible');
+        var counters = e.target.matches('.count') ? [e.target] : e.target.querySelectorAll('.count');
+        counters.forEach(function(c){ if(!c.dataset.done){ c.dataset.done='1'; runCount(c); } });
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.2});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+
+  var ledgerCount = document.getElementById('ledger-count');
+  var done = 0;
+  var ledgerIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var key = e.target.getAttribute('data-ledger-section');
+        var item = document.querySelector('.ledger-item[data-ledger-item="'+key+'"]');
+        if(item && !item.classList.contains('is-done')){
+          item.classList.add('is-done');
+          done++;
+          ledgerCount.textContent = done;
+        }
+        ledgerIO.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.35});
+  document.querySelectorAll('[data-ledger-section]').forEach(function(el){ ledgerIO.observe(el); });
+})();
+</script>
