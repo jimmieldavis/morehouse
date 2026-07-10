@@ -82,14 +82,14 @@
 
   /* HERO */
   .hero{
-    min-height:100vh; display:flex; flex-direction:column; justify-content:flex-start;
-    padding: 7.5rem 1.6rem 4rem; background:
+    aspect-ratio:3/2; min-height:60vh; display:flex; flex-direction:column; justify-content:flex-start;
+    padding: 6.5rem 1.6rem 4rem; background:
       linear-gradient(180deg, rgba(28,19,21,0.5) 0%, rgba(28,19,21,0.35) 25%, rgba(28,19,21,0.55) 60%, rgba(28,19,21,0.82) 100%),
-      url(__IMG_BASKETBALL__) center 0%/cover no-repeat;
+      url(__IMG_BASKETBALL__) center center/100% 100% no-repeat;
   }
   .hero-row{display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; flex-wrap:wrap;}
   .hero .eyebrow{margin-bottom:1rem; text-align:left; font-size:0.85rem; text-shadow:0 1px 10px rgba(0,0,0,0.6);}
-  .hero h1{color:var(--white); max-width:14ch; text-align:left; font-size:clamp(2.3rem, 6.5vw, 4.6rem); text-shadow:0 2px 16px rgba(0,0,0,0.55);}
+  .hero h1{color:var(--white); max-width:14ch; text-align:left; font-size:clamp(2rem, 5.5vw, 3.8rem); text-shadow:0 2px 16px rgba(0,0,0,0.55);}
   .hero .lede{font-family:'Source Serif',serif; font-size:var(--fs-lede); font-style:italic; color:var(--bone); max-width:32ch; text-align:right; border-right:3px solid var(--maroon); padding-right:1rem; text-shadow:0 1px 10px rgba(0,0,0,0.6);}
   .scrollcue{margin-top:2.5rem; font-family:'Big Shoulders',sans-serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--maroon-tint); display:flex; align-items:center; gap:0.5rem;}
   .scrollcue .bar{width:1px; height:34px; background:linear-gradient(var(--maroon-tint), transparent); animation:pulse 1.8s ease-in-out infinite;}
@@ -290,15 +290,13 @@
   <div class="panel-head" data-reveal>
     <div class="eyebrow">The Pipeline to Division I</div>
     <h3 style="color:var(--white); margin-top:0.6rem;">Proof the Talent Travels</h3>
-    <div class="two-col" style="margin-top:1.2rem; align-items:start;">
-      <div>
-        <p>Cedric Taylor III was SIAC Freshman of the Year in 2023&ndash;24 and First Team All-SIAC in 2024&ndash;25 at Morehouse. At Division I Howard, he averaged 17.2 points a game and helped the Bison win the 2026 MEAC title and reach the NCAA Tournament.</p>
-        <p>Maurice Veney, a First Team All-SIAC tight end at Morehouse, transferred straight to the SEC (Vanderbilt), ranked #66 nationally among transfer tight ends. The first Division II-to-SEC tight end transfer on record.</p>
-      </div>
-      <div class="split-stat" style="margin-top:0;">
-        <div class="item"><div class="stat-num small">17.2</div><div class="stat-label">Taylor's points per game at Howard (DI)</div></div>
-        <div class="item"><div class="stat-num small">#66</div><div class="stat-label">Veney's national transfer TE ranking</div><div class="stat-sub">247Sports, en route to Vanderbilt (SEC)</div></div>
-      </div>
+    <p class="lede" style="margin-top:1rem;">Five Maroon Tigers across three sports have moved directly to Division I programs since 2025, each starting or contributing immediately. This is not a single transfer, it is a pattern.</p>
+    <div class="grid" data-reveal="fade" style="margin-top:1.5rem;">
+      <div class="tile"><div class="stat-num small">17.2</div><div class="stat-label">Cedric Taylor III &middot; Basketball, to Howard (DI)</div><div class="stat-sub">PPG at Howard; helped the Bison win the 2026 MEAC title and reach the NCAA Tournament</div></div>
+      <div class="tile"><div class="stat-num small">#66</div><div class="stat-label">Maurice Veney &middot; Football, to Vanderbilt (SEC)</div><div class="stat-sub">National transfer TE ranking, 247Sports; first Division II-to-SEC tight end transfer on record</div></div>
+      <div class="tile"><div class="stat-num small">427</div><div class="stat-label">Nicholas Woodford &middot; Football, to Central Michigan</div><div class="stat-sub">Rushing yards, freshman season at Morehouse (105 att, 5 TD); also 245 receiving yards</div></div>
+      <div class="tile"><div class="stat-num small">79</div><div class="stat-label">Tyrese Stanley &middot; Football, to Northern Illinois</div><div class="stat-sub">Career tackles across two seasons starting at Morehouse; 247Sports 3-star transfer</div></div>
+      <div class="tile"><div class="stat-num small">13.5</div><div class="stat-label">Josiah Lawson &middot; Basketball, to Howard (DI)</div><div class="stat-sub">PPG at Morehouse; SIAC Tournament MVP before transferring to the 2026 MEAC champion</div></div>
     </div>
   </div>
 </section>
