@@ -85,7 +85,30 @@
   nav.mainnav .links{display:flex; gap:1.7rem; list-style:none; margin:0; padding:0;}
   nav.mainnav .links a{color:rgba(245,241,236,0.92); text-decoration:none; font-weight:700; font-size:0.92rem; letter-spacing:0.05em; text-transform:uppercase; transition:color 0.2s;}
   nav.mainnav .links a:hover{color:var(--white);}
-  @media (max-width:760px){ nav.mainnav .links{display:none;} }
+  .nav-toggle{display:none;}
+  @media (max-width:760px){
+    nav.mainnav .links{
+      display:flex; flex-direction:column; gap:0; position:absolute; top:100%; left:0; right:0;
+      background:var(--ink); padding:0.5rem 1.6rem 1rem; max-height:0; overflow:hidden;
+      transition:max-height 0.3s ease;
+    }
+    nav.mainnav .links.is-open{max-height:320px; padding:0.5rem 1.6rem 1.2rem;}
+    nav.mainnav .links li{border-top:0.5px solid rgba(245,241,236,0.15);}
+    nav.mainnav .links a{display:block; padding:0.85rem 0;}
+    .nav-toggle{
+      display:flex; align-items:center; justify-content:center; width:2.4rem; height:2.4rem;
+      background:none; border:none; padding:0; cursor:pointer;
+    }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
+      content:''; display:block; width:1.4rem; height:2px; background:var(--bone);
+      position:relative; transition:transform 0.2s ease, opacity 0.2s ease;
+    }
+    .nav-toggle span::before{position:absolute; top:-7px;}
+    .nav-toggle span::after{position:absolute; top:7px;}
+    .nav-toggle[aria-expanded="true"] span{background:transparent;}
+    .nav-toggle[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg);}
+    .nav-toggle[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg);}
+  }
 
   section{position:relative; width:100%; overflow:hidden;}
 
@@ -100,6 +123,9 @@
   .hero .eyebrow{margin-bottom:1rem; text-align:left; font-size:0.85rem; text-shadow:0 1px 10px rgba(0,0,0,0.6);}
   .hero h1{color:var(--white); max-width:14ch; text-align:left; font-size:clamp(2rem, 5.5vw, 3.8rem); text-shadow:0 2px 16px rgba(0,0,0,0.55);}
   .hero .lede{font-family:'Source Serif',serif; font-size:var(--fs-lede); font-style:italic; color:var(--bone); max-width:32ch; text-align:right; border-right:3px solid var(--maroon); padding-right:1rem; text-shadow:0 1px 10px rgba(0,0,0,0.6);}
+  @media (max-width:760px){
+    .hero .lede{text-align:left; border-right:none; border-left:3px solid var(--maroon); padding-right:0; padding-left:1rem; max-width:none;}
+  }
   .scrollcue{margin-top:2.5rem; font-family:'Big Shoulders',sans-serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--maroon-tint); display:flex; align-items:center; gap:0.5rem;}
   .scrollcue .bar{width:1px; height:34px; background:linear-gradient(var(--maroon-tint), transparent); animation:pulse 1.8s ease-in-out infinite;}
   @keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
@@ -209,7 +235,8 @@
 <div class="progress" id="progress"></div>
 <nav class="mainnav">
   <span class="brand">Morehouse Athletics &middot; 2025&ndash;26</span>
-  <ul class="links">
+  <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu"><span></span></button>
+  <ul class="links" id="navLinks">
     <li><a href="#championships">Championships</a></li>
     <li><a href="#scholars">Scholars</a></li>
     <li><a href="#world">The World</a></li>
@@ -445,6 +472,20 @@
 </footer>
 
 <script>
+(function(){
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', function(){
+    var open = navLinks.classList.toggle('is-open');
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinks.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){
+      navLinks.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var bar = document.getElementById('progress');
