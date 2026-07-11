@@ -88,15 +88,14 @@
   .nav-toggle{display:none;}
   @media (max-width:760px){
     nav.mainnav .links{
-      display:flex; flex-direction:column; gap:0; position:absolute; top:100%; left:0; right:0;
-      background:var(--ink); padding:0.5rem 1.6rem 1rem; max-height:0; overflow:hidden;
-      transition:max-height 0.3s ease;
+      display:none; flex-direction:column; gap:0; position:absolute; top:100%; left:0; right:0;
+      background:var(--ink); padding:0.5rem 1.6rem 1.2rem;
     }
-    nav.mainnav .links.is-open{max-height:320px; padding:0.5rem 1.6rem 1.2rem;}
+    nav.mainnav .links.is-open{display:flex;}
     nav.mainnav .links li{border-top:0.5px solid rgba(245,241,236,0.15);}
     nav.mainnav .links a{display:block; padding:0.85rem 0;}
     .nav-toggle{
-      display:flex; align-items:center; justify-content:center; width:2.4rem; height:2.4rem;
+      display:flex; align-items:center; justify-content:center; width:2.75rem; height:2.75rem;
       background:none; border:none; padding:0; cursor:pointer;
     }
     .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
