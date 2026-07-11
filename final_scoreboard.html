@@ -168,9 +168,12 @@
   }
   .rail .tile .stat-num{font-size:var(--fs-stat-sm);}
   @media (max-width:760px){
-    .rail{display:block; overflow-x:visible; scroll-snap-type:none;}
-    .rail .tile{width:auto; border-bottom:1px solid var(--line);}
-    .rail .tile:last-child{border-bottom:none;}
+    .rail{
+      display:grid; grid-template-columns:1fr; overflow-x:visible; scroll-snap-type:none;
+      border-top:none; border-bottom:none; box-shadow:0 0 0 1px var(--line);
+    }
+    .rail .tile{width:auto; padding:2rem 1.6rem;}
+    .bleed.champs{background-size:100% auto; background-position:top center; background-repeat:no-repeat;}
   }
 
   /* grid tiles (non-rail) */
