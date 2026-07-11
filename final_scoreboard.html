@@ -236,8 +236,10 @@
   .btn.primary:hover{background:var(--bone); transform:translateY(-2px);}
   .btn.secondary{border:1.5px solid rgba(245,241,236,0.5); color:var(--white);}
   .btn.secondary:hover{background:rgba(245,241,236,0.1); transform:translateY(-2px);}
-  .give-sub{margin-top:1.3rem; font-size:0.9rem; color:rgba(245,241,236,0.75);}
-  .give-sub a{color:var(--maroon-tint); text-decoration:underline;}
+  .btn .give-sub{
+    display:block; margin-top:0.5rem; text-transform:none; letter-spacing:normal;
+    font-family:'Source Serif',serif; font-weight:400; font-size:0.8rem; color:inherit; opacity:0.75;
+  }
 
   /* footer */
   footer.site{background:var(--ink); padding:4.5rem 1.6rem 2.2rem; border-top:1px solid var(--line);}
@@ -456,10 +458,9 @@
   <h2>Invest in Winning <span class="grey">Championships</span></h2>
   <p>This is proof of what Morehouse Athletics has accomplished in recent years. It is also an opportunity for you to be part of what happens next.</p>
   <div class="btns">
-    <a class="btn primary" href="https://giving.morehouse.edu/s/give-now">Give Now</a>
+    <a class="btn secondary" href="https://giving.morehouse.edu/s/give-now">Give Now<span class="give-sub">Area of Support: <em>Fund for Athletics</em></span></a>
     <a class="btn secondary" href="https://www.givecampus.com/campaigns/75554/donations/new?a=12019953">Grow the $1M</a>
   </div>
-  <p class="give-sub">Area of Support: <em><a href="https://giving.morehouse.edu/s/give-now">Fund for Athletics</a></em></p>
 </section>
 </main>
 
