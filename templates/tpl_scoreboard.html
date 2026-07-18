@@ -123,14 +123,17 @@
       url(__IMG_BASKETBALL__) center center/100% 100% no-repeat;
   }
   .hero-row{display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; flex-wrap:wrap;}
-  .hero-stats{display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:rgba(245,241,236,0.18); box-shadow:0 0 0 1px rgba(245,241,236,0.18); margin-top:2rem;}
-  .hero-stats .tile{background:rgba(28,19,21,0.55); backdrop-filter:blur(4px); padding:2rem 1.6rem;}
+  .hero-stats{display:grid; grid-template-columns:repeat(3, 1fr); box-shadow:0 0 0 1px var(--line); margin-top:2rem;}
+  .hero-stats .tile{background:transparent; padding:2rem 1.6rem; border-right:1px solid var(--line);}
+  .hero-stats .tile:last-child{border-right:none;}
   .hero .eyebrow{margin-bottom:1rem; text-align:left; font-size:0.85rem; text-shadow:0 1px 10px rgba(0,0,0,0.6);}
   .hero h1{color:var(--white); max-width:20ch; text-align:left; font-size:clamp(2.4rem, 6.3vw, 4.4rem); text-shadow:0 2px 16px rgba(0,0,0,0.55);}
   .hero .lede{font-family:'Source Serif',serif; font-size:var(--fs-lede); font-style:italic; color:var(--bone); max-width:32ch; text-align:right; border-right:3px solid var(--maroon); padding-right:1rem; text-shadow:0 1px 10px rgba(0,0,0,0.6);}
   @media (max-width:760px){
     .hero .lede{text-align:left; border-right:none; border-left:3px solid var(--maroon); padding-right:0; padding-left:1rem; max-width:none;}
     .hero-stats{grid-template-columns:1fr; margin-top:1.5rem;}
+    .hero-stats .tile{border-right:none; border-bottom:1px solid var(--line);}
+    .hero-stats .tile:last-child{border-bottom:none;}
   }
   .scrollcue{margin-top:2.5rem; font-family:'Big Shoulders',sans-serif; font-size:0.7rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--maroon-tint); display:flex; align-items:center; gap:0.5rem;}
   .scrollcue .bar{width:1px; height:34px; background:linear-gradient(var(--maroon-tint), transparent); animation:pulse 1.8s ease-in-out infinite;}
@@ -196,6 +199,14 @@
   /* grid tiles (non-rail) */
   .grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1px; background:var(--line); box-shadow:0 0 0 1px var(--line);}
   .grid .tile{background:var(--ink); padding:2rem 1.6rem;}
+  .bleed.baseball .panel.tight .grid, .bleed.golf .panel.tight .grid{grid-template-columns:repeat(3, 1fr); gap:0; background:none; box-shadow:0 0 0 1px var(--line);}
+  .bleed.baseball .panel.tight .tile, .bleed.golf .panel.tight .tile{background:transparent; border-right:1px solid var(--line);}
+  .bleed.baseball .panel.tight .tile:last-child, .bleed.golf .panel.tight .tile:last-child{border-right:none;}
+  @media (max-width:760px){
+    .bleed.baseball .panel.tight .grid, .bleed.golf .panel.tight .grid{grid-template-columns:1fr;}
+    .bleed.baseball .panel.tight .tile, .bleed.golf .panel.tight .tile{border-right:none; border-bottom:1px solid var(--line);}
+    .bleed.baseball .panel.tight .tile:last-child, .bleed.golf .panel.tight .tile:last-child{border-bottom:none;}
+  }
 
   .quote{
     font-family:'Source Serif',serif; font-style:italic; font-size:clamp(1.2rem,3vw,1.7rem);
