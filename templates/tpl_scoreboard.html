@@ -209,8 +209,11 @@
 
   .split-stat{display:flex; flex-wrap:wrap; gap:2.5rem 3rem; margin-top:2.2rem;}
   .split-stat .item{min-width:140px;}
-  .bleed.track .split-stat{display:grid; grid-template-columns:repeat(2, 1fr);}
-  .bleed.track .split-stat .item{box-shadow:0 0 0 1px var(--line); padding:1.5rem 1.8rem; min-width:0;}
+  .bleed.track .split-stat{display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:var(--line); box-shadow:0 0 0 1px var(--line);}
+  .bleed.track .split-stat .item{background:var(--ink); padding:1.5rem 1.8rem; min-width:0;}
+  @media (max-width:760px){
+    .bleed.track .split-stat{grid-template-columns:1fr;}
+  }
 
   footer{
     padding:4.5rem 1.6rem 3rem; text-align:center; border-top:1px solid var(--line);
@@ -549,7 +552,7 @@
         io.unobserve(e.target);
       }
     });
-  }, {threshold:0.25});
+  }, {threshold:0, rootMargin:'0px 0px 150px 0px'});
 
   document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
   document.querySelectorAll('.count').forEach(function(el){
