@@ -210,11 +210,11 @@
   .split-stat{display:flex; flex-wrap:wrap; gap:2.5rem 3rem; margin-top:2.2rem;}
   .split-stat .item{min-width:140px;}
   .bleed.track .split-stat{display:grid; grid-template-columns:repeat(2, 1fr); box-shadow:0 0 0 1px var(--line);}
-  .bleed.track .split-stat .item{padding:1.5rem 1.8rem; min-width:0; border-right:1px solid var(--line);}
+  .bleed.track .split-stat .item{padding:1.5rem 1.8rem; min-width:0; border-right:1px solid var(--line); display:flex; flex-direction:column; justify-content:center;}
   .bleed.track .split-stat .item:last-child{border-right:none;}
   @media (max-width:760px){
     .bleed.track .split-stat{grid-template-columns:1fr;}
-    .bleed.track .split-stat .item{border-right:none; border-bottom:1px solid var(--line); min-height:9.5rem;}
+    .bleed.track .split-stat .item{border-right:none; border-bottom:1px solid var(--line); min-height:13rem;}
     .bleed.track .split-stat .item:last-child{border-bottom:none;}
   }
 
